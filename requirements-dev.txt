@@ -1,0 +1,12 @@
+numpy
+pandas
+scikit-learn
+mlflow
+dagshub
+dvc
+lightgbm
+joblib
+dvc_s3
+pytest
+streamlit
+awscli
