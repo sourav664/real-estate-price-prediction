@@ -10,11 +10,15 @@ from pathlib import Path
 
 # create logger
 logger = logging.getLogger("data_preparation")
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 # console handler
 handler = logging.StreamHandler()
-handler.setLevel(logging.INFO)
+handler.setLevel(logging.DEBUG)
+
+# file handler
+file_handler = logging.FileHandler('data_preparation.log')
+file_handler.setLevel(logging.ERROR)
 
 # add handler to logger
 logger.addHandler(handler)
@@ -23,6 +27,7 @@ logger.addHandler(handler)
 formatter = logging.Formatter(fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 # add formatter to handler
 handler.setFormatter(formatter)
+file_handler.setFormatter(formatter)
 
 
 
@@ -111,5 +116,5 @@ if __name__ == "__main__":
     filename_list = [train_filename, test_filename]
     
     for filename, path, data in zip(filename_list, data_paths, data_subsets):
-        save_data.data(data=data, save_path = path)
+        save_data(data=data, save_path = path)
         logger.info(f"{filename.replace(".csv","")} data saved to location")

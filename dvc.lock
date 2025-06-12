@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  Data_Preparation:
+    cmd: python src/data/data_preparation.py
+    deps:
+    - path: data/raw/real_estatesv9.csv
+      hash: md5
+      md5: bcdc6f7fddb068fb32d922e34d8a3581
+      size: 1240127
+    - path: src/data/data_preparation.py
+      hash: md5
+      md5: 02a440ef363dee551d8b65e8785b092d
+      size: 3892
+    params:
+      params.yaml:
+        Data_Preparation.random_state: 42
+        Data_Preparation.test_size: 0.25
+    outs:
+    - path: data/interim/test.csv
+      hash: md5
+      md5: 9aaa5ee4ef929c0bb5d9914b771a8ee8
+      size: 309949
+    - path: data/interim/train.csv
+      hash: md5
+      md5: 1fbe60439a1f29ad1114a72ea8a0827f
+      size: 930340
+  Data_Preprocessing:
+    cmd: python src/features/data_preprocessing.py
+    deps:
+    - path: data/interim/test.csv
+      hash: md5
+      md5: 9aaa5ee4ef929c0bb5d9914b771a8ee8
+      size: 309949
+    - path: data/interim/train.csv
+      hash: md5
+      md5: 1fbe60439a1f29ad1114a72ea8a0827f
+      size: 930340
+    - path: src/data/data_preparation.py
+      hash: md5
+      md5: 02a440ef363dee551d8b65e8785b092d
+      size: 3892
+    outs:
+    - path: data/processed/test_trans.csv
+      hash: md5
+      md5: be921d7e4befd333c76d0ad42b40e2aa
+      size: 652914
+    - path: data/processed/train_trans.csv
+      hash: md5
+      md5: 6e4cfd6a3e955af6163d472cbf1f48c1
+      size: 1956975
