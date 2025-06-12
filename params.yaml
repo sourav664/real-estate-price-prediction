@@ -1,5 +1,5 @@
 Data_Preparation:
-  test_size: 0.25
+  test_size: 0.2
   random_state: 42
 
 
@@ -10,7 +10,7 @@ Train:
     max_depth: 22
     min_samples_split: 4
     min_samples_leaf: 4
-    max_features: None
+    max_features: null
     max_samples: 0.891044850651133
     verbose: 1
     n_jobs: -1

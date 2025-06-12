@@ -115,17 +115,11 @@ if __name__ == "__main__":
     
     # model parameters
     model_params = read_params(params_file_path)['Train']
-    model_params = model_params["model_params"]
     
-    # create the model
-    model = LGBMRegressor(**model_params)
-    logger.info("Model created successfully")
     
-    # train the model
-    model = train_model(model, X_train, y_train)
-    logger.info("Model trained successfully")
+   
     
-     # rf_params
+    # rf_params
     rf_params = model_params['Random_Forest']
     logger.info("random forest parameters read")
     
